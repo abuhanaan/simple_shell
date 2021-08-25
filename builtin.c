@@ -9,25 +9,25 @@
 
 int lister(char *line[])
 {
-		int status;
-		pid_t waiter, child;
+	int status;
+	pid_t waiter, child;
 
-		child = fork();
-		if (child == -1)
-				perror("Forking");
+	child = fork();
+	if (child == -1)
+		perror("Forking");
 
-		if (child == 0)
-		{
-				execve("/bin/ls", line, NULL);
-		}
-		else
-		{
-				waiter = wait(&status);
-				if (waiter == -1)
-						perror("Waiting");
-		}
-		free(line);
-		return (1);
+	if (child == 0)
+	{
+		execve("/bin/ls", line, NULL);
+	}
+	else
+	{
+		waiter = wait(&status);
+		if (waiter == -1)
+			perror("Waiting");
+	}
+	free(line);
+	return (1);
 }
 
 /**
@@ -39,23 +39,23 @@ int lister(char *line[])
 
 int echoer(char *line[])
 {
-		int i = 1;
+	int i = 1;
 
-		if (line[i] == NULL)
-		{
-				write(1, "\n", 2);
-				return (1);
-		}
-
-		while (line[i] != NULL)
-		{
-				write(1, line[i], strleng(line[i]));
-				i++;
-				if (line[i] != NULL)
-						write(1, " ", 2);
-		}
+	if (line[i] == NULL)
+	{
 		write(1, "\n", 2);
 		return (1);
+	}
+
+	while (line[i] != NULL)
+	{
+		write(1, line[i], strleng(line[i]));
+		i++;
+		if (line[i] != NULL)
+			write(1, " ", 2);
+	}
+	write(1, "\n", 2);
+	return (1);
 }
 
 /**
@@ -67,25 +67,25 @@ int echoer(char *line[])
 
 int cater(char *line[])
 {
-		int status;
-		pid_t waiter, child;
+	int status;
+	pid_t waiter, child;
 
-		child = fork();
-		if (child == -1)
-				perror("Forking");
+	child = fork();
+	if (child == -1)
+		perror("Forking");
 
-		if (child == 0)
-		{
-				execve("/bin/cat", line, NULL);
-		}
-		else
-		{
-				waiter = wait(&status);
-				if (waiter == -1)
-						perror("Waiting");
-		}
-		free(line);
-		return (1);
+	if (child == 0)
+	{
+		execve("/bin/cat", line, NULL);
+	}
+	else
+	{
+		waiter = wait(&status);
+		if (waiter == -1)
+			perror("Waiting");
+	}
+	free(line);
+	return (1);
 }
 
 /**
@@ -130,47 +130,47 @@ int builtincom(char **line)
 
 int pwder(char *line[])
 {
-		int status;
-		pid_t waiter, child;
+	int status;
+	pid_t waiter, child;
 
-		child = fork();
-		if (child == -1)
-				perror("Forking");
+	child = fork();
+	if (child == -1)
+		perror("Forking");
 
-		if (child == 0)
-		{
-				execve("/bin/pwd", line, NULL);
-		}
-		else
-		{
-				waiter = wait(&status);
-				if (waiter == -1)
-						perror("Waiting");
-		}
-		free(line);
-		return (1);
+	if (child == 0)
+	{
+		execve("/bin/pwd", line, NULL);
+	}
+	else
+	{
+		waiter = wait(&status);
+		if (waiter == -1)
+			perror("Waiting");
+	}
+	free(line);
+	return (1);
 }
 
 
 int echorr(char *line[])
 {
-		int status;
-		pid_t waiter, child;
+	int status;
+	pid_t waiter, child;
 
-		child = fork();
-		if (child == -1)
-				perror("Forking");
+	child = fork();
+	if (child == -1)
+		perror("Forking");
 
-		if (child == 0)
-		{
-				execve("/bin/echo", line, NULL);
-		}
-		else
-		{
-				waiter = wait(&status);
-				if (waiter == -1)
-						perror("Waiting");
-		}
-		free(line);
-		return (1);
+	if (child == 0)
+	{
+		execve("/bin/echo", line, NULL);
+	}
+	else
+	{
+		waiter = wait(&status);
+		if (waiter == -1)
+			perror("Waiting");
+	}
+	free(line);
+	return (1);
 }
