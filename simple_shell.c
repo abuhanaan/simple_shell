@@ -13,7 +13,7 @@ void type_prompt(void)
 static int first_time = 1;
 if (first_time)
 {
-const char *CLEAR_SCREEN_ANSI = " \e[1;1H\e[2J";
+const char *CLEAR_SCREEN_ANSI = " \033[1;1H\033[2J";
 write(STDOUT_FILENO, CLEAR_SCREEN_ANSI, 12);
 first_time = 0;
 }
@@ -49,15 +49,15 @@ pch = strtok(NULL, " \n");
 /*first word is the command*/
 strcpy(cmd, array[0]);
 /*others are parameters*/
-for (int j = 0; j < i; j++)
+for (j = 0; j < i; j++)
 	par[j] = array[j];
-par[j] = "\0";
+par[j] = NULL;
 }
 free(line);
-for (j = 0; j < sizeof(*array); j++)
+/*for (j = 0; j < 100; j++)
 {
 array[j] = "";
-}
+}*/
 free(pch);
 }
 /**
@@ -68,8 +68,8 @@ int main(void)
 {
 char cmd[100], command[100], *parameters[20];
 /*environment variable*/
-char *envp[] = {(char *) "PATH=/bin", 0};
-int j;
+char *envp[] = {(char *) "PATH=/bin", (char *)0};
+/*long unsigned int j; */
 while (1)
 {
 type_prompt();
@@ -80,14 +80,9 @@ else
 {
 strcpy(cmd, "/bin/");
 strcat(cmd, command);
-
-execve(cmd, parameters, envp);
-for (j = 0; j < sizeof(*parameters); j++)
-{
-parameters[j] = NULL;
+execve(cmd, parameters, NULL);
 }
-}
-if (strcmp(cmd, "/bin/exit") == 0)
+if (strcmp(cmd, "exit") == 0)
 	break;
 }
 return (0);
