@@ -1,50 +1,54 @@
-ALX - Simple Unix Like Shell
-===========================
-     C programming with ALX School!
-================================================================================
+# Simple Shell
 
-## Description:
+This is a simple shell, written in C by Bekalu Tilahun & Mustapha Qomorudeen . This
+shell supports basic operations, such as boolean statements logic
+operators (&& and ||), variables, variables and singly/double quotes
+expansions.
 
-This project is based on the implementation of a simple shell. The shell is an interactive interface that allows users to execute commands and utilities in Linux and other UNIX-based operating systems. Shells use either a command-line interface or graphical user interface, depending on a computer's role and particular operation.
+## Features
 
-## Installation:
+| Feature                        | Description                                                                     |
+| ------------------------------ | ------------------------------------------------------------------------------- |
+| Executable files               | it allows executable files to be run                                            |
+| Path Search                    | when you input a command, all directories in \`$PATH\` are searched             |
+| Command arguments              | You can pass multiple arguments to all kinds of commands                        |
+| Single-quote expansions        | Single-quote strings are expanded                                               |
+| Double-quote expansions        | Double-quote strings are expanded                                               |
+| Variables and expansions       | Variable expansions are supported                                               |
+| Environment Variables          | You can add and remove environment variables                                    |
+| Ctrl + C (<sup>C</sup>/SIGINT) | Intterupts are handled                                                          |
+| Ctrl + D (EOF)                 | EOF conditions are handled                                                      |
+| Non-interactive mode           | You can pipe input to the shell, and it will run non-interactively              |
+| Script files                   | You can provide a file argument to the shell for it to be run non-interactively |
+| PS1 prompt                     | the PS1 variable can be inherited, and is expanded as the shell prompt          |
 
-- clone the repository
+## Builtins
 
-     https://github.com/abuhanaan/simple_shell.git
+There are a number of builtins that the shell supports
 
-- compile with
+| Command  | Description                    | Example                         |
+| -------- | ------------------------------ | ------------------------------- |
+| cd       | change directory               | cd $HOME                        |
+| alias    | create an alias                | alias L='ls'; L; alias; alias L |
+| env      | Print environment variables    | env                             |
+| setenv   | Set an environment variable    | setenv LL 'ls -l'; $LL          |
+| unsetenv | Remove an environment variable | unsetenv LL                     |
+| history  | Shows input history            | history                         |
+| exit     | exit the shell                 | exit; exit 5;                   |
+| help     | Dislays usage for builtins     | help cd; help                   |
 
-     gcc -Wall -Werror -Wextra -pedantic *.c -o tsh
+## Extra Info
 
+### Bugs
 
-## Example:
+Only known bug is the spanning of unfinished input (e.g unterminated
+quotes) over multiple lines.
 
-     ubuntu@ubuntu$ ./hsh
-     $ pwd
-     /home/ubuntu/simple_shell
-     $ /bin/pwd
-     /home/ubuntu/simple_shell
-     $ ls -la
-     -rw-rw-r-- 1 vagrant vagrant  bytes <date> builtins.c
-     -rw-rw-r-- 1 vagrant vagrant   bytes <date> shell.h
+### Authors
 
-## Builtins commands:
+  -Bekalu Tilahun 
+  -Mustapha Qomorudeen 
 
-     exit: exits a shell
+### Date Released
 
-     env: show/displays environment variables
-
-## Special Features:
-
-     Ctrl + C: To prevent the killing of the simple-shell
-
-     Ctrl + D: exit the simple-shell
-
-## Files:
-
-     AUTHORS: This file contains all the contributors to this repository.
-
-     README.md: This file contains this readme text.
-
-     man_1_simple_shell: The man page for our shell.
+25th August 2021
